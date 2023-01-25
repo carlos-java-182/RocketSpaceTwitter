@@ -22,6 +22,16 @@ func Manejadores() {
 	router.HandleFunc("/modificarPerfil", middlew.ChequeoBD(middlew.ValidoJWT(routers.ModificarPerfil))).Methods(("PUT"))
 	router.HandleFunc("/tweet", middlew.ChequeoBD(middlew.ValidoJWT(routers.GraboTweet))).Methods(("POST"))
 	router.HandleFunc("/leoTweets", middlew.ChequeoBD(middlew.ValidoJWT(routers.LeoTweets))).Methods(("GET"))
+	router.HandleFunc("/eliminarTweet", middlew.ChequeoBD(middlew.ValidoJWT(routers.EliminarTweet))).Methods(("DELETE"))
+	router.HandleFunc("/subirAvatar", middlew.ChequeoBD(routers.SubirAvatar)).Methods(("POST"))
+	router.HandleFunc("/obtenerAvatar", middlew.ChequeoBD(routers.ObtenerAvatar)).Methods(("GET"))
+	router.HandleFunc("/subirBanner", middlew.ChequeoBD(routers.SubirBanner)).Methods(("POST"))
+	router.HandleFunc("/obtenerBanner", middlew.ChequeoBD(routers.ObtenerBanner)).Methods(("GET"))
+	router.HandleFunc("/altaRelacion", middlew.ChequeoBD(routers.AltaRelacion)).Methods(("POST"))
+	router.HandleFunc("/bajaRelacion", middlew.ChequeoBD(routers.BajaRelacion)).Methods(("DELETE"))
+	router.HandleFunc("/consultaRelacion", middlew.ChequeoBD(routers.ConsultaRelacion)).Methods(("GET"))
+	router.HandleFunc("/listaUsuarios", middlew.ChequeoBD(routers.ListaUsuarios)).Methods(("GET"))
+	router.HandleFunc("/leoTweetsSeguidores", middlew.ChequeoBD(routers.LeoTweetsSeguidores)).Methods(("GET"))
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
